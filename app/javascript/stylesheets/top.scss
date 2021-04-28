@@ -1,0 +1,62 @@
+.image-container {
+  background-image: url(../images/top.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+}
+
+.navbar-brand {
+}
+
+.text-top-color {
+  color: #fd3378;
+  font-weight: bold;
+}
+
+.top-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //上記の4行で要素を上下中央配置にしている。
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.top-authentication {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__sign-up-btn {
+    border-radius: 30px;
+    background: #fd3378;
+    white-space: nowrap;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 2px;
+  }
+  &__sign-in-btn {
+    border-radius: 30px;
+    white-space: nowrap;
+    border-style: solid;
+    border-color: #fff;
+    border-width: 2px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar__sign_in_btn {
+    display: none;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .top-authentication {
+    &__sign-in-btn {
+      display: none;
+    }
+  }
+}
