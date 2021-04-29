@@ -10,6 +10,10 @@
     </div>
   </div>
 
+  <div class="profile-text">
+    <%= @user.self_introduction %>
+  </div>
+  
   <% if current_user.id == @user.id %>
 
     <div class="user-action">
