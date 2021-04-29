@@ -4,7 +4,10 @@
 // that code so it'll be compiled.
 
 import 'bootstrap';
+import 'hammerjs';
+
 import '../stylesheets/application';
+import '@fortawesome/fontawesome-free/js/all';
 import '@fortawesome/fontawesome-free/js/all';
 
 import Rails from "@rails/ujs"
@@ -13,6 +16,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 require("src/profile_image_upload");
+require("src/swipe");
 
 Rails.start()
 Turbolinks.start()
