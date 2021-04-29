@@ -14,10 +14,13 @@ class ChatRoomsController < ApplicationController
       ChatRoomUser.create(chat_room_id: chat_room.id , user_id: current_user.id)
       ChatRoomUser.create(chat_room_id: chat_room.id , user_id: params[:user_id])
     end
-    redirect_to action: :show , id: chat_room.id
+    redirect_to action: :show , id: chat_room
   end
 
   def show
+    @chat_room = ChatRoom.find(params[:id])
+    @chat_room_user = @chat_room.chat_room_users.where.not(user_id: current_user.id).first.user
+    @chat_messages = ChatMessage.where(chat_room_id: @chat_room.id)
   end
 
 end
