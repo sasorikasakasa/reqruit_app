@@ -55,6 +55,8 @@ if(location.pathname == "/users"){
         // keepがfalseの時スワイプしたカードにremoveというクラス名をたす
         event.target.classList.toggle("removed",!keep);
 
+        let reaction = event.deltaX > 0 ? "like" : "dislike";
+
         if(keep){
           // 横移動が200以下なら元に戻す
           event.target.style.transform= "";
@@ -67,6 +69,8 @@ if(location.pathname == "/users"){
           let xMulti = event.deltaX * 0.03;
           let yMulti = event.deltaY / 80;
           let rotate = xMulti * yMulti;
+          // el.id(一枚のカードのid)にはindex.html.erbで確認できる通りuser.idが与えられている。
+          postReaction(el.id,reaction);
 
           event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
 
@@ -76,6 +80,22 @@ if(location.pathname == "/users"){
 
       });
     });
+
+    function postReaction(user_id,reaction){
+      $.ajax({
+        url: "reactions",
+        type: "POST",
+        datatype :"json",
+        data: {
+          user_id: user_id,
+          reaction: reaction,
+        }
+      })
+      .done(function(){
+        console.log("done!");
+      })
+    }
+
 
     function createButtonListener(reaction){
 
@@ -87,6 +107,11 @@ if(location.pathname == "/users"){
       let moveOutWidth = document.body.clientWidth * 2;
     
       let card = cards[0];
+
+      let user_id = card.id;
+
+      postReaction(user_id,reaction);
+
       card.classList.add('removed');
     
       if (reaction == "like") {
