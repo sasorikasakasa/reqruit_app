@@ -1,5 +1,5 @@
-messageContainer.insertAdjcentHTML('afterbegin',"<%= j(render @messages) %>")
+messageContainer.insertAdjacentHTML('afterbegin',"<%= j(render partial: 'chat_messages/chat_message', collection: @chat_messages,locals: { chat_room_user: @chat_room_user}) %>")
 
-<% if @messages.peresent? %>
+<% if @chat_messages.present? %>
   showAdditionally = true
 <% end %>

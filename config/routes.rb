@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :matching , only: [:index]
 
   resources :chat_rooms, only: [:create,:show] do
-    collection do
+    member do
       get "show_additionally"
     end
   end

@@ -1,4 +1,4 @@
-<div class="chat-room-show-page">
+<div class="chat-room-show-page" id="<%= @chat_room.id%>">
   <nav class="navbar navbar-light chat-room__header">
     <%= link_to matching_index_path, class: "nav-item nav-link" do%>
       <i class="fas fa-chevron-left"></i>
@@ -18,7 +18,7 @@
   </nav>
 
   <div id='chat-messages'>
-    <%= render @chat_messages %>
+    <%= render partial: 'chat_messages/chat_message', collection: @chat_messages,locals: { chat_room_user: @chat_room_user} %>
   </div>
 
   <form class="chat-room__message-form">

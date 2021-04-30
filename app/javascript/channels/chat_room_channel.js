@@ -48,10 +48,11 @@ document.addEventListener('turbolinks:load',() => {
       showAdditionally = false
 
       oldestMessageId = document.querySelector(".chat-message").id
+      let chat_room_id = document.querySelector(".chat-room-show-page").id
 
       $.ajax({
         type: "GET",
-        url: "/chat_rooms/show_additionally",
+        url: `/chat_rooms/${chat_room_id}/show_additionally`,
         datatype: "json",
         cache: false,
         // data-remote: trueを入れるとshow_additionally.js.erbを作動できる
