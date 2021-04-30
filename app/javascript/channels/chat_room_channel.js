@@ -22,6 +22,7 @@ document.addEventListener('turbolinks:load',() => {
     received(data) {
       const chatMessages = document.getElementById("chat-messages");
       chatMessages.insertAdjacentHTML("beforeend", data["chat_message"])
+      scrollToBottom();
       // Called when there's incoming data on the websocket for this channel
     },
   
@@ -42,6 +43,10 @@ document.addEventListener('turbolinks:load',() => {
   if(/chat_rooms/.test(location.pathname)){
     $(document).on("keydown", ".chat-room__message-form_textarea", function(e){
       if (e.key === "Enter"){
+
+        if(!e.target.value.trim()){
+          return
+        }
   
         const chat_room_id =$("textarea").data("chat_room_id");
         appChatRoom.speak(e.target.value, chat_room_id);
