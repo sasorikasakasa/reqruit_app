@@ -12,5 +12,10 @@ Rails.application.routes.draw do
 
   resources :matching , only: [:index]
 
-  resources :chat_rooms, only: [:create,:show]
+  resources :chat_rooms, only: [:create,:show] do
+    member do
+      get "show_additionally"
+    end
+  end
+
 end

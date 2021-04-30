@@ -139,7 +139,6 @@ if(location.pathname == "/users"){
       let removedCards = document.querySelectorAll(".removed");
       back_card = removedCards[removedCards.length -1];
       if (!back_card) return
-      console.log(back_card);
       back_card.style.transform = "";
       back_card.classList.toggle("removed",!back_card);
       initCards();
