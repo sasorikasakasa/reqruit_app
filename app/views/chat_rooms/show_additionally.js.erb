@@ -1,4 +1,12 @@
+
+var messageHeight = messageContainer.scrollHeight;
+
 messageContainer.insertAdjacentHTML('afterbegin',"<%= j(render partial: 'chat_messages/chat_message', collection: @chat_messages,locals: { chat_room_user: @chat_room_user}) %>")
+
+
+var newMessageHeight = messageContainer.scrollHeight;
+messageContainer.scrollBy(0, newMessageHeight - messageHeight);
+
 
 <% if @chat_messages.present? %>
   showAdditionally = true
