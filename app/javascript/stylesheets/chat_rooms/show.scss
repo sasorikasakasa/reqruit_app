@@ -1,9 +1,13 @@
+.chat-room__header {
+  height: 10vh;
+}
+
 .chat-room-show-page {
   max-width: 414px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
   .chat-room {
     &__header {
       border-bottom: 1px solid #fafafa;
@@ -32,17 +36,25 @@
       }
     }
     &__message-form {
-      margin-top: auto;
+      height: 20vh;
       border-top: 1px solid #e8e8e8;
-      padding: 24px 24px 0 24px;
+      padding: 24px;
       width: 100%;
       &_textarea {
         width: 100%;
+        height: 100%;
         border: none;
         white-space: normal;
       }
     }
   }
+}
+
+#chat-messages {
+  min-width: 100%;
+  max-height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .chat-message {
