@@ -24,8 +24,9 @@ class ChatRoomsController < ApplicationController
   end
 
   def show_additionally
+    binding.pry
     last_id = params[:oldest_message_id].to_i - 1
-    
+
     @messages = ChatMessage.include(:user_id).order(:id).where(id: 1..last_id).last(50)
   end
 
