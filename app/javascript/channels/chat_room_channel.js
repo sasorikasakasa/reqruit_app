@@ -39,6 +39,31 @@ document.addEventListener('turbolinks:load',() => {
   scrollToBottom();
 
 
+  // ここら辺が表示されてない古いメッセージを取得するコード
+  let oldestMessageId;
+  window.showAdditionally = true;
+
+  window.messageContainer.addEventListener("scroll",() => {
+    if (document.getElementById("chat-messages").scrollTop === 0 && showAdditionally){
+      showAdditionally = false
+
+      oldestMessageId = document.querySelector(".chat-message").id
+
+      $.ajax({
+        type: "GET",
+        url: "/chat_rooms/show_additionally",
+        datatype: "json",
+        cache: false,
+        // data-remote: trueを入れるとshow_additionally.js.erbを作動できる
+        data: {oldest_message_id: oldestMessageId, remote: true}
+      })
+    }
+    // passive: trueはイベントハンドラ処理が終了するまでスクロールを開始することができないという状態を回避するために書く
+  }, {passive: true});
+
+
+
+
 
   if(/chat_rooms/.test(location.pathname)){
     $(document).on("keydown", ".chat-room__message-form_textarea", function(e){
@@ -47,7 +72,6 @@ document.addEventListener('turbolinks:load',() => {
         if(!e.target.value.trim()){
           return
         }
-  
         const chat_room_id =$("textarea").data("chat_room_id");
         appChatRoom.speak(e.target.value, chat_room_id);
         e.target.value = '';

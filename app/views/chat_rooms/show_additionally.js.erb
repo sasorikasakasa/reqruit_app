@@ -1,0 +1,5 @@
+messageContainer.insertAdjcentHTML('afterbegin',"<%= j(render @messages) %>")
+
+<% if @messages.peresent? %>
+  showAdditionally = true
+<% end %>

@@ -1,4 +1,4 @@
-<div class="chat-message">
+<div class="chat-message" id="<%= chat_message.id %>">
   <% if chat_message.user.id != current_user.id %>
     <div class="chat-message__partner">
       <% if @chat_room_user.profile_image.url.nil? %>
